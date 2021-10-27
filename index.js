@@ -68,7 +68,9 @@ playButton.addEventListener('click',getShow);
 playButton.addEventListener('click',function(){
   click_key();
   if(buttonCount > 1){
-    window.location.reload();
+    getNum = '';
+    inputNum.value='';
+    strikeBall.textContent='';
   }
 });
 
@@ -79,7 +81,7 @@ inputNum.addEventListener('keydown',function(ev){
     alert('세 자리 숫자를 입력해주세요');
     } else if(enterCount > 10){
       strikeBall.style.color = 'red';
-      alert('시도 횟수를 초과하였습니다');
+      alert('시도 횟수를 초과하였습니다. 정답은 '+getNum+'입니다');
     } else {
       comparison();
       if(getNum === inputNum.value){
