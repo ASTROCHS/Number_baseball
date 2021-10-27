@@ -65,16 +65,17 @@ function click_key(){
   buttonCount++;
 }
 
-playButton.addEventListener('click',randomNum);
 playButton.addEventListener('click',getShow);
 playButton.addEventListener('click',function(){
+  click_key()
   if(buttonCount > 1){
     getNum = '';
-    //random = '';
     inputNum.value='';
     strikeBall.textContent='';
+    enterCount = 0;
+    randomNum(); //random = '';
   } else {
-    click_key()
+    randomNum()
   }
 });
 
