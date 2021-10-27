@@ -67,12 +67,13 @@ function click_key(){
 playButton.addEventListener('click',randomNum);
 playButton.addEventListener('click',getShow);
 playButton.addEventListener('click',function(){
-  click_key();
   if(buttonCount > 1){
     getNum = '';
     random = '';
     inputNum.value='';
     strikeBall.textContent='';
+  } else {
+    click_key()
   }
 });
 
