@@ -16,18 +16,14 @@ function randomNum(){
   return console.log(getNum);
 };
 
-// 영역 보이기
+// 영역 바꾸기
 function getShow(){
   field.style.visibility = "visible";
+  playButton.textContent = '게임 재시작'
 }
 
-/*숫자를 stirng으로 변환
-function numToString(n) {
-  return (n + '').split('');
-} */
-
-
-function comparison(){ //스트라이크 및 볼 판명하기
+//스트라이크 및 볼 판별하기
+function comparison(){
   var strike = 0;
   var ball = 0;
   var x = getNum.split('');
@@ -45,49 +41,59 @@ function comparison(){ //스트라이크 및 볼 판명하기
     }
   }
   strikeBall;
-  strikeBall.textContent = strike+'S'+ball+'B';
+  strikeBall.textContent = strike+'S'+ball+'B'+' ('+enterCount+'/10회)';
   result.appendChild(strikeBall);
 }
 
-//횟수 설정 (엔터키 입력 횟수)
+//엔터키 입력 횟수
 
+var enterCount = 0;
 
+function enter_key(ev){
+  if(ev.keyCode == 13 && inputNum.value.length === 3){
+    enterCount++;
+    return enterCount;
+  }
+}
+
+//버튼 클릭 횟수
+var buttonCount = 0;
+
+function click_key(){
+  buttonCount++;
+}
 
 playButton.addEventListener('click',randomNum);
 playButton.addEventListener('click',getShow);
+playButton.addEventListener('click',function(){
+  click_key();
+  if(buttonCount > 1){
+    window.location.reload();
+  }
+});
 
+inputNum.addEventListener('keydown',enter_key);
 inputNum.addEventListener('keydown',function(ev){
   if(ev.keyCode == 13){
     if(inputNum.value.length !== 3){
     alert('세 자리 숫자를 입력해주세요');
+    } else if(enterCount > 10){
+      strikeBall.style.color = 'red';
+      alert('시도 횟수를 초과하였습니다');
     } else {
       comparison();
+      if(getNum === inputNum.value){
+        alert('축하합니다. 정답입니다!');
+      }
     }
   }
 })
 
-/*#
-for(var i = 0; i<10; i++){
-  comparison(); // 함수를 10번 반복한다는거고... 엔터 키 클릭 수는..??
-}
-*/
 
-/* 버튼 클릭 횟수
-playButton.addEventListener('click',button_click);
+/*숫자를 stirng으로 변환
+function numToString(n) {
+  return (n + '').split('');
+} */
 
-var count = 0;
-function button_click(){
-  count++;
-  return console.log(count);
-}
-*/
 
-inputNum.addEventListener('keydown',enter_key);
 
-var count = 0;
-function enter_key(ev){
-  if(ev.keyCode == 13){
-    count++;
-    return console.log(count);
-  }
-}
