@@ -26,12 +26,13 @@ function numToString(n) {
   return (n + '').split('');
 } */
 
-var strike = 0;
-var ball = 0;
 
 function comparison(){ //스트라이크 및 볼 판명하기
+  var strike = 0;
+  var ball = 0;
   var x = getNum.split('');
   var y = inputNum.value.split('');
+
   for(var i = 0; i<3; i++){
     for(var j = 0; j<3; j++){
       if(x[i]===y[j]){
