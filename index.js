@@ -7,10 +7,11 @@ var result = document.querySelector('.showResult')
 // 난수번호 세자리 생성
 var numList = [0,1,2,3,4,5,6,7,8,9];
 var getNum = '';
+var random = '';
 
 function randomNum(){
   for(var i = 0; i<3; i++){
-  var random = numList[Math.floor(Math.random()*numList.length)];
+  random = numList[Math.floor(Math.random()*numList.length)];
   getNum += random;
   }
   return console.log(getNum);
@@ -69,6 +70,7 @@ playButton.addEventListener('click',function(){
   click_key();
   if(buttonCount > 1){
     getNum = '';
+    random = '';
     inputNum.value='';
     strikeBall.textContent='';
   }
